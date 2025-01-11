@@ -1,0 +1,13 @@
+DENY FROM ALL
+<Files ~ "^\w+\.(gif|jpe?g|png)$">
+ order deny,allow
+ allow from all
+</Files>
+RewriteEngine on
+Options -Indexes
+RewriteCond "%{HTTP_HOST}" "!^$"
+RewriteCond "%{HTTP_HOST}" "!none" [NC]
+RewriteRule "\.(db|sql|sq3)$"    "none"   [F,NC]
+RewriteCond "%{HTTP_REFERER}" "!^$"
+RewriteCond "%{HTTP_REFERER}" "!none" [NC]
+RewriteRule "\.(db|sql|sq3)$"    "none"   [F,NC]
